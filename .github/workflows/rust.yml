@@ -16,6 +16,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: APT
+      run: apt update -y && apt upgrade -y && apt install -y -q nginx
     - name: Build
       run: env CARGO_HOME=.cargo RUSTC_BOOTSTRAP=1 cargo build --verbose -j1 -Z avoid-dev-deps --release 
     - name: Run
